@@ -69,9 +69,6 @@ filters = {
 
 def main():
     requests_client = Requester()
-    r = requests_client.get_front_page()
-
-    #soup = BeautifulSoup(r.content, 'html5lib')
 
     menu = build_menu()
     path = menu.navigate()

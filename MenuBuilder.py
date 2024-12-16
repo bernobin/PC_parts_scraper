@@ -23,7 +23,11 @@ class Menu:
 
         for i, child in enumerate(kids):
             print(f"{i}:\t{child.name}")
-        selection = int(input('which menu you want?\n'))
+
+        selection = None
+        while selection not in range(len(kids)):
+            selection = int(input('which menu you want?\n'))
+
         return kids[selection].navigate()
 
     def path(self, path=''):

@@ -26,9 +26,9 @@ class Requester:
     def __init__(self):
         self.session = requests.Session()
 
-    def get_front_page(self):
-        print('requesting:', URL)
-        return self.session.get(URL, headers=headers)
+#    def get_front_page(self):
+#        print('requesting:', URL)
+#        return self.session.get(URL, headers=headers)
 
     def get_products_list(self, endpoint, filters=''):
         print('requesting:', URL + endpoint + filters)
