@@ -99,29 +99,29 @@ class SeleniumBrowser:
             back.click()
             print(f"Clicked on the menu {data_id} to close.")
 
+    def explore(self, data_id='', menu=None):
+        if data_id == '':
+            self.click_category_menu()
+            menu = []
+
+        for data_id in self.visible_submenus():
+            self.open_submenu(data_id)
+            menu = self.explore(data_id, menu)
+            self.close_submenu(data_id)
+
+        return menu + self.visible_menus()
+
 
 def main():
     try:
-        menu = explore()
+        browser = SeleniumBrowser(headless=False)
+        menu = browser.explore()
         with open('./menu.json', 'w') as fo:
             json.dump(menu, fo)
     except selenium.common.exceptions.ElementClickInterceptedException:
         answer = input('unexpected hold-up, would you like to continue?')
         if answer:
             pass
-
-
-def explore(data_id='', browser=SeleniumBrowser(headless=True), menu=None):
-    if data_id == '':
-        browser.click_category_menu()
-        menu = []
-
-    for data_id in browser.visible_submenus():
-        browser.open_submenu(data_id)
-        menu = explore(data_id, browser, menu)
-        browser.close_submenu(data_id)
-
-    return menu + browser.visible_menus()
 
 
 if __name__ == '__main__':
