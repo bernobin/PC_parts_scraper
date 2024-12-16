@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = "https://www.toppreise.ch/"  # Replace with your actual base URL
+URL = "https://www.toppreise.ch/"
 
 # implement status?
 # handle consent window
